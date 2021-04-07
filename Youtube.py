@@ -63,13 +63,13 @@ def Play_list():
 	vid = Playlist(user)
 	print(" >>> Playlist Name : ",vid.title)
 	print(" ================================================= ")
-
+	folder = vid.title
 	for i in vid.video_urls:
 		youtube = YouTube(i,on_progress_callback=on_progress)
 		mb = naturalsize(youtube.streams.get_highest_resolution().filesize)
 		print(" >>> Video Name : ",youtube.title)
 		print(" >>> Video Size : ",mb)
-		v = youtube.streams.get_highest_resolution().download()
+		v = youtube.streams.get_highest_resolution().download(folder)
 		print(" ================================================= ")
 
 while True:
